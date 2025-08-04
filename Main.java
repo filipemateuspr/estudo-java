@@ -49,6 +49,7 @@ public class Main {
 		switch (userChoice) {
 			case 1:
 				System.out.println(getExerciseStatement(1));
+				showExercise01();
 				break;
 			case 2:
 				System.out.println(getExerciseStatement(2));
@@ -79,5 +80,24 @@ public class Main {
 		}
 		
 		return foundStatement;
+	}
+	
+	private static void showExercise01() {
+		final double FIXED_RATE = 5.00;
+		final double RATE_PER_KM = 2.50;
+		double distanceTraveled = 0;
+		double totalValue = 0;
+		
+		System.out.print("Por favor, informe a distância percorrida em quilômetro: ");
+		
+		distanceTraveled = scanner.nextDouble();
+		totalValue = (distanceTraveled * RATE_PER_KM) + FIXED_RATE;
+		
+		System.out.println(MessageFormat.format("Execução concluída!\nResultados:\nTaxa fixa: R$ {0}\nTaxa por KM: R$ {1}\nDistância percorrida: {2} KM\nValor total da corrida: R$ {3}", FIXED_RATE, RATE_PER_KM, distanceTraveled, totalValue));
+		
+		System.out.print("Pressione [ENTER] para retornar ao menu inicial.");
+		scanner.next();
+		
+		showMainMenu();
 	}
 }
