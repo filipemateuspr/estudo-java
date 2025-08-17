@@ -53,12 +53,15 @@ public class Main {
 				break;
 			case 2:
 				System.out.println(getExerciseStatement(2));
+				showExercise02();
 				break;
 			case 3:
 				System.out.println(getExerciseStatement(3));
+				showExercise03();
 				break;
 			case 4:
 				System.out.println(getExerciseStatement(4));
+				showExercise04();
 				break;
 			case 5:
 				System.out.println(getExerciseStatement(5));
@@ -93,9 +96,74 @@ public class Main {
 		distanceTraveled = scanner.nextDouble();
 		totalValue = (distanceTraveled * RATE_PER_KM) + FIXED_RATE;
 		
-		System.out.println(MessageFormat.format("Execução concluída!\nResultados:\nTaxa fixa: R$ {0}\nTaxa por KM: R$ {1}\nDistância percorrida: {2} KM\nValor total da corrida: R$ {3}", FIXED_RATE, RATE_PER_KM, distanceTraveled, totalValue));
+		System.out.printf("Execução concluída!\nResultados:"
+				+ "\nTaxa fixa: R$ %.2f"
+				+ "\nTaxa por KM: R$ %.2f"
+				+ "\nDistância percorrida: %.2f KM"
+				+ "\nValor total da corrida: R$ %.2f", FIXED_RATE, RATE_PER_KM, distanceTraveled, totalValue);
 		
-		System.out.print("Pressione [ENTER] para retornar ao menu inicial.");
+		System.out.print("\nPressione [ENTER] para retornar ao menu inicial.");
+		scanner.next();
+		
+		showMainMenu();
+	}
+	
+	private static void showExercise02() {
+		int userInput = 0;
+		int result = 0;
+		
+		System.out.print("Por favor, forneça uma quantidade de dias: ");
+		userInput = scanner.nextInt();
+		
+		result = userInput * 1440;
+		
+		System.out.printf("Execução concluída!\nResultados:"
+				+ "\nDias fornecidos: %d"
+				+ "\nTotal de minutos: %d", userInput, result);
+		
+		System.out.print("\nPressione [ENTER] para retornar ao menu inicial.");
+		scanner.next();
+		
+		showMainMenu();
+	}
+	
+	private static void showExercise03() {
+		double productPrice = 0;
+		
+		System.out.print("Por favor, forneça o valor do produto: R$");
+		productPrice = scanner.nextDouble();
+		
+		double applied10PercentOff = productPrice - (productPrice * 0.10);
+		double applied5PercentOff = applied10PercentOff - (applied10PercentOff * 0.05);
+		
+		System.out.printf("Execução concluída!\nResultados:"
+						+ "\nPreço original do produto: R$ %.2f"
+						+ "\nPreço com 10%% de desconto: R$ %.2f"
+						+ "\nPreço com mais 5%% de desconto: R$ %.2f", productPrice, applied10PercentOff, applied5PercentOff);
+		
+		System.out.print("\nPressione [ENTER] para retornar ao menu inicial.");
+		scanner.next();
+		
+		showMainMenu();
+	}
+	
+	private static void showExercise04() {
+		int totalToBuy = 0;
+		double totalPrice = 0;
+		
+		System.out.print("Quantas garras d'água desejas comprar? Por favor, digite um número: ");
+		totalToBuy = scanner.nextInt();
+		
+		double unitPrice = totalToBuy < 6 ? 1.50 : 1.20;
+		
+		totalPrice = totalToBuy < 6 ? unitPrice * totalToBuy : unitPrice * totalToBuy;
+		
+		System.out.printf("Execução concluída!\nResultados:"
+				+ "\nTotal de garrafas compradas: %d"
+				+ "\nTotal a pagar: R$ %.2f"
+				+ "\nValor unitário: R$ %.2f", totalToBuy, totalPrice, unitPrice);
+		
+		System.out.print("\nPressione [ENTER] para retornar ao menu inicial.");
 		scanner.next();
 		
 		showMainMenu();
